@@ -1,0 +1,216 @@
+"use client";
+
+import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ArrowDown, Terminal, Zap } from "lucide-react";
+import PixelBlast from "@/components/PixelBlast";
+
+export function Hero() {
+  const [mounted, setMounted] = useState(false);
+  const [currentColor, setCurrentColor] = useState("#B19EEF");
+  const animationFrameRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number>(0);
+  const startColorRef = useRef<string>("#B19EEF");
+  const targetColorRef = useRef<string>("#3b82f6");
+  const colorIndexRef = useRef<number>(0);
+
+  // Color palette to cycle through
+  const colors = [
+    "#B19EEF", // Purple
+    "#3b82f6", // Blue
+    "#8b5cf6", // Violet
+    "#ec4899", // Pink
+    "#10b981", // Green
+    "#f59e0b", // Amber
+    "#ef4444", // Red
+    "#06b6d4", // Cyan
+  ];
+
+  // Helper functions for color interpolation
+  const hexToRgb = (hex: string): [number, number, number] => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+      ? [
+          parseInt(result[1], 16),
+          parseInt(result[2], 16),
+          parseInt(result[3], 16),
+        ]
+      : [181, 158, 239]; // Default purple
+  };
+
+  const rgbToHex = (r: number, g: number, b: number): string => {
+    return `#${[r, g, b].map((x) => {
+      const hex = Math.round(x).toString(16);
+      return hex.length === 1 ? "0" + hex : hex;
+    }).join("")}`;
+  };
+
+  const lerp = (start: number, end: number, t: number): number => {
+    return start + (end - start) * t;
+  };
+
+  const easeInOutCubic = (t: number): number => {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Smooth color transition animation
+  useEffect(() => {
+    const transitionDuration = 2000; // 2 seconds for smooth transition
+    const holdDuration = 3000; // 3 seconds holding each color
+    let totalCycleTime = 0;
+
+    const animate = (timestamp: number) => {
+      if (startTimeRef.current === 0) {
+        startTimeRef.current = timestamp;
+      }
+
+      const elapsed = timestamp - startTimeRef.current;
+      totalCycleTime = elapsed % (transitionDuration + holdDuration);
+
+      if (totalCycleTime < transitionDuration) {
+        // Transitioning
+        const progress = totalCycleTime / transitionDuration;
+        const easedProgress = easeInOutCubic(progress);
+
+        const [r1, g1, b1] = hexToRgb(startColorRef.current);
+        const [r2, g2, b2] = hexToRgb(targetColorRef.current);
+
+        const r = lerp(r1, r2, easedProgress);
+        const g = lerp(g1, g2, easedProgress);
+        const b = lerp(b1, b2, easedProgress);
+
+        setCurrentColor(rgbToHex(r, g, b));
+      } else {
+        // Holding color - prepare for next transition
+        if (totalCycleTime < transitionDuration + 50) {
+          // Just finished transition, update to next target
+          colorIndexRef.current = (colorIndexRef.current + 1) % colors.length;
+          startColorRef.current = targetColorRef.current;
+          targetColorRef.current = colors[colorIndexRef.current];
+          startTimeRef.current = timestamp - (totalCycleTime - transitionDuration);
+        }
+      }
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    // Initialize
+    startColorRef.current = colors[0];
+    targetColorRef.current = colors[1];
+    colorIndexRef.current = 1;
+    startTimeRef.current = 0;
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Pixel Blast Background */}
+      <div className="absolute inset-0 z-0">
+        <PixelBlast
+          variant="circle"
+          pixelSize={8}
+          // color={currentColor}
+          color="#B19EEF"
+          patternScale={2.5}
+          patternDensity={1.5}
+          pixelSizeJitter={0}
+          enableRipples={true}
+          rippleSpeed={0.4}
+          rippleThickness={0.1}
+          rippleIntensityScale={1}
+          // liquid
+          // liquidStrength={0.12}
+          // liquidRadius={1.2}
+          // liquidWobbleSpeed={5}
+          speed={0.6}
+          edgeFade={0.25}
+          transparent
+        />
+      </div>
+      
+      {/* Gradient Overlay for better text readability - pointer-events-none so clicks pass through */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80 pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 pointer-events-none">
+        <div
+          className={`space-y-6 transition-all duration-1000 ${
+            mounted
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            <div className="relative">
+              <Terminal className="h-4 w-4 animate-pulse" />
+              {/* <Zap className="h-3 w-3 absolute -top-1 -right-1 text-primary animate-ping" /> */}
+            </div>
+            <span>Your Everything Engineer</span>
+          </div>
+
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
+            <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
+              Conducting Duct-Tape
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              Experiments
+            </span>
+          </h1>
+
+          <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto">
+            Crafting, building, and breaking things. Always on a project. Software should be simple, efficient, reliable, fast, easy, and "cost-effective".
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+            <Button
+              size="lg"
+              onClick={() => scrollToSection("projects")}
+              className="text-base px-8 py-6 pointer-events-auto"
+            >
+              View My Work
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="text-base px-8 py-6 pointer-events-auto"
+            >
+              <Link href="/showcase">Website Examples</Link>
+            </Button>
+          </div>
+
+          <div className="pt-12">
+            <button
+              onClick={() => scrollToSection("about")}
+              className="animate-bounce text-muted-foreground hover:text-foreground transition-colors pointer-events-auto"
+            >
+              <ArrowDown className="h-6 w-6 mx-auto" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
