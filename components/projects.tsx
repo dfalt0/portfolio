@@ -21,7 +21,7 @@ export function Projects() {
       title: "AI Fine Tuning | malware-dataset1-test1",
       description:
         "A work in progress AI fine tuning project with UnslothAI, fine tuning a model to detect malware.",
-      technologies: ["Google Collab", "NVidia CUDA", "UnSloth.ai", "Open-Source Models", "Python", "PyTorch"],
+      technologies: ["Google Collab", "NVidia CUDA", "unsloth.ai", "Open-Source Models", "Python", "PyTorch"],
       image: "/ai-sc.png",
       link: "#",
       github: "https://github.com/dfalt0/malware-dataset1-test1",

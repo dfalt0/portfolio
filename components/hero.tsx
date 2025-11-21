@@ -47,18 +47,14 @@ export function Hero() {
           variant="circle"
           pixelSize={8}
           color={currentColor}
-          patternScale={5}
-          patternDensity={1.5}
+          patternScale={2}
+          patternDensity={1.3}
           pixelSizeJitter={0}
           enableRipples
-          rippleSpeed={0.4}
+          rippleSpeed={0.2}
           rippleThickness={0.1}
-          rippleIntensityScale={1}
-          // liquid
-          // liquidStrength={0.12}
-          // liquidRadius={1.2}
-          // liquidWobbleSpeed={5}
-          speed={0.6}
+          rippleIntensityScale={1.5}
+          speed={2.0}
           edgeFade={0.25}
           transparent
         />
@@ -77,7 +73,7 @@ export function Hero() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             <div className="relative">
-              <Terminal className="h-4 w-4 animate-pulse" />
+              <Terminal className="h-4 w-4 animate-pulse" style={{ animationDuration: '1s' }} />
               {/* <Zap className="h-3 w-3 absolute -top-1 -right-1 text-primary animate-ping" /> */}
             </div>
             <span>Your Everything Engineer</span>
