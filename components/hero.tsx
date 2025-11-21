@@ -1,116 +1,32 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Terminal, Zap } from "lucide-react";
 import PixelBlast from "@/components/PixelBlast";
 
+// Color palette to choose from
+const colors = [
+  "#B19EEF", // Purple
+  "#3b82f6", // Blue
+  "#8b5cf6", // Violet
+  "#ec4899", // Pink
+  "#10b981", // Green
+  "#f59e0b", // Amber
+  "#ef4444", // Red
+  "#06b6d4", // Cyan
+];
+
 export function Hero() {
   const [mounted, setMounted] = useState(false);
   const [currentColor, setCurrentColor] = useState("#B19EEF");
-  const animationFrameRef = useRef<number | null>(null);
-  const startTimeRef = useRef<number>(0);
-  const startColorRef = useRef<string>("#B19EEF");
-  const targetColorRef = useRef<string>("#3b82f6");
-  const colorIndexRef = useRef<number>(0);
-
-  // Color palette to cycle through
-  const colors = [
-    "#B19EEF", // Purple
-    "#3b82f6", // Blue
-    "#8b5cf6", // Violet
-    "#ec4899", // Pink
-    "#10b981", // Green
-    "#f59e0b", // Amber
-    "#ef4444", // Red
-    "#06b6d4", // Cyan
-  ];
-
-  // Helper functions for color interpolation
-  const hexToRgb = (hex: string): [number, number, number] => {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-      ? [
-          parseInt(result[1], 16),
-          parseInt(result[2], 16),
-          parseInt(result[3], 16),
-        ]
-      : [181, 158, 239]; // Default purple
-  };
-
-  const rgbToHex = (r: number, g: number, b: number): string => {
-    return `#${[r, g, b].map((x) => {
-      const hex = Math.round(x).toString(16);
-      return hex.length === 1 ? "0" + hex : hex;
-    }).join("")}`;
-  };
-
-  const lerp = (start: number, end: number, t: number): number => {
-    return start + (end - start) * t;
-  };
-
-  const easeInOutCubic = (t: number): number => {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  };
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  // Smooth color transition animation
-  useEffect(() => {
-    const transitionDuration = 2000; // 2 seconds for smooth transition
-    const holdDuration = 3000; // 3 seconds holding each color
-    let totalCycleTime = 0;
-
-    const animate = (timestamp: number) => {
-      if (startTimeRef.current === 0) {
-        startTimeRef.current = timestamp;
-      }
-
-      const elapsed = timestamp - startTimeRef.current;
-      totalCycleTime = elapsed % (transitionDuration + holdDuration);
-
-      if (totalCycleTime < transitionDuration) {
-        // Transitioning
-        const progress = totalCycleTime / transitionDuration;
-        const easedProgress = easeInOutCubic(progress);
-
-        const [r1, g1, b1] = hexToRgb(startColorRef.current);
-        const [r2, g2, b2] = hexToRgb(targetColorRef.current);
-
-        const r = lerp(r1, r2, easedProgress);
-        const g = lerp(g1, g2, easedProgress);
-        const b = lerp(b1, b2, easedProgress);
-
-        setCurrentColor(rgbToHex(r, g, b));
-      } else {
-        // Holding color - prepare for next transition
-        if (totalCycleTime < transitionDuration + 50) {
-          // Just finished transition, update to next target
-          colorIndexRef.current = (colorIndexRef.current + 1) % colors.length;
-          startColorRef.current = targetColorRef.current;
-          targetColorRef.current = colors[colorIndexRef.current];
-          startTimeRef.current = timestamp - (totalCycleTime - transitionDuration);
-        }
-      }
-
-      animationFrameRef.current = requestAnimationFrame(animate);
-    };
-
-    // Initialize
-    startColorRef.current = colors[0];
-    targetColorRef.current = colors[1];
-    colorIndexRef.current = 1;
-    startTimeRef.current = 0;
-    animationFrameRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
+    // Pick a random color on page load
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    setCurrentColor(randomColor);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -130,12 +46,11 @@ export function Hero() {
         <PixelBlast
           variant="circle"
           pixelSize={8}
-          // color={currentColor}
-          color="#B19EEF"
-          patternScale={2.5}
+          color={currentColor}
+          patternScale={5}
           patternDensity={1.5}
           pixelSizeJitter={0}
-          enableRipples={true}
+          enableRipples
           rippleSpeed={0.4}
           rippleThickness={0.1}
           rippleIntensityScale={1}
@@ -188,7 +103,7 @@ export function Hero() {
               onClick={() => scrollToSection("projects")}
               className="text-base px-8 py-6 pointer-events-auto"
             >
-              View My Work
+              Projects
             </Button>
             <Button
               size="lg"
@@ -196,7 +111,7 @@ export function Hero() {
               asChild
               className="text-base px-8 py-6 pointer-events-auto"
             >
-              <Link href="/showcase">Website Examples</Link>
+              <Link href="/showcase">Freelance</Link>
             </Button>
           </div>
 

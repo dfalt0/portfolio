@@ -9,7 +9,7 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 export function Navigation() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -21,6 +21,8 @@ export function Navigation() {
   }, []);
 
   useEffect(() => {
+    // Ensure dark mode is set on mount
+    document.documentElement.classList.add("dark");
     const isDarkMode = document.documentElement.classList.contains("dark");
     setIsDark(isDarkMode);
   }, []);
@@ -72,10 +74,10 @@ export function Navigation() {
           <div className="hidden md:flex items-center gap-6">
             {pathname === "/" ? (
               <>
-                {["About", "Blog", "Projects", "Skills", "Contact"].map((item) => (
+                {["About", "Projects", "Skills", "Contact"].map((item) => (
                   <button
                     key={item}
-                    onClick={() => scrollToSection(item === "Blog" ? "dev-blog" : item.toLowerCase())}
+                    onClick={() => scrollToSection(item.toLowerCase())}
                     className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {item}
@@ -90,6 +92,16 @@ export function Navigation() {
                 Home
               </Link>
             )}
+            <Link
+              href="/blog"
+              className={`text-sm font-medium transition-colors ${
+                pathname === "/blog"
+                  ? "text-foreground font-semibold"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Blog
+            </Link>
             <Link
               href="/showcase"
               className={`text-sm font-medium transition-colors ${
@@ -156,15 +168,11 @@ export function Navigation() {
           <div className="md:hidden py-4 border-t border-border">
             {pathname === "/" ? (
               <>
-                {["About", "Blog", "Projects", "Skills", "Contact"].map((item) => (
+                {["About", "Projects", "Skills", "Contact"].map((item) => (
                   <button
                     key={item}
                     onClick={() => {
-                      if (item === "Blog") {
-                        scrollToSection("dev-blog");
-                      } else {
-                        handleNavClick(item);
-                      }
+                      handleNavClick(item);
                     }}
                     className="block w-full text-left px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
@@ -181,6 +189,17 @@ export function Navigation() {
                 Home
               </Link>
             )}
+            <Link
+              href="/blog"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors ${
+                pathname === "/blog"
+                  ? "text-foreground font-semibold bg-accent"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+              }`}
+            >
+              Blog
+            </Link>
             <Link
               href="/showcase"
               onClick={() => setIsMobileMenuOpen(false)}

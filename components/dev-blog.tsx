@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 export function DevBlog() {
   const blogPosts = [
@@ -13,7 +14,7 @@ export function DevBlog() {
         "Exploring best practices for building scalable web applications with modern frameworks and architectures.",
       date: "2024-01-15",
       tags: ["Web Development", "Architecture", "Best Practices"],
-      link: "#",
+      slug: "building-scalable-web-applications",
     },
     {
       title: "Understanding React Performance Optimization",
@@ -21,7 +22,7 @@ export function DevBlog() {
         "Deep dive into React performance optimization techniques and how to identify and fix common bottlenecks.",
       date: "2024-01-10",
       tags: ["React", "Performance", "Optimization"],
-      link: "#",
+      slug: "react-performance-optimization",
     },
     {
       title: "The Future of Full-Stack Development",
@@ -29,7 +30,7 @@ export function DevBlog() {
         "A look at emerging trends and technologies shaping the future of full-stack development.",
       date: "2024-01-05",
       tags: ["Full-Stack", "Trends", "Technology"],
-      link: "#",
+      slug: "future-of-full-stack-development",
     },
   ];
 
@@ -78,10 +79,9 @@ export function DevBlog() {
                   asChild
                   className="w-full"
                 >
-                  <a href={post.link} target="_blank" rel="noopener noreferrer">
+                  <Link href={`/blog/${post.slug}`}>
                     Read More
-                    <ExternalLink className="h-4 w-4 ml-2" />
-                  </a>
+                  </Link>
                 </Button>
               </CardContent>
             </Card>

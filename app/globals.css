@@ -233,17 +233,43 @@
     @apply ml-8;
   }
 
+  /* Dracula/Tokyo Night inspired vibrant syntax highlighting */
   .keyword {
-    @apply text-[#569cd6] dark:text-[#79c0ff];
-    font-weight: 500;
+    color: #ff79c6 !important; /* Pink - Dracula style */
+    font-weight: 600;
   }
 
   .variable {
-    @apply text-[#9cdcfe] dark:text-[#a5d6ff];
+    color: #8be9fd !important; /* Cyan - bright and vibrant */
   }
 
   .string {
-    @apply text-[#ce9178] dark:text-[#a5d6ff];
+    color: #f1fa8c !important; /* Yellow - Dracula string color */
+  }
+
+  .property {
+    color: #50fa7b !important; /* Green - Dracula style */
+  }
+
+  .operator {
+    color: #ff79c6 !important; /* Pink - matches keywords */
+  }
+
+  .punctuation {
+    color: #bd93f9 !important; /* Purple - Tokyo Night inspired */
+  }
+
+  .function {
+    color: #ffb86c !important; /* Orange - vibrant function color */
+  }
+
+  .number {
+    color: #bd93f9 !important; /* Purple - Tokyo Night style */
+  }
+
+  .comment {
+    color: #6272a4 !important; /* Muted blue-gray - Dracula comment */
+    font-style: italic;
   }
 
   .cursor-blink {
@@ -264,5 +290,147 @@
   .code-editor-window:hover {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 60px rgba(59, 130, 246, 0.2);
     transition: box-shadow 0.3s ease;
+  }
+
+  /* Blog Content Styles */
+  .blog-content {
+    @apply text-base leading-7;
+  }
+
+  .blog-content h2 {
+    @apply text-2xl font-bold mt-8 mb-4 text-foreground;
+  }
+
+  .blog-content h3 {
+    @apply text-xl font-semibold mt-6 mb-3 text-foreground;
+  }
+
+  .blog-content p {
+    @apply mb-4 text-muted-foreground;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    @apply mb-4 ml-6 space-y-2;
+  }
+
+  .blog-content ul {
+    @apply list-disc;
+  }
+
+  .blog-content ol {
+    @apply list-decimal;
+  }
+
+  .blog-content li {
+    @apply text-muted-foreground;
+  }
+
+  .blog-content strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .blog-content a {
+    @apply text-primary hover:underline;
+  }
+
+  .blog-content code {
+    @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .blog-content pre {
+    @apply bg-muted p-4 rounded-lg overflow-x-auto mb-4;
+  }
+
+  .blog-content pre code {
+    @apply bg-transparent p-0;
+  }
+
+  /* Bongo Cat Animation Styles */
+  :root {
+    --bongo-bg: #1a1e2d;
+    --bongo-green: #a5ea9b;
+    --bongo-pink: #ff61d8;
+    --bongo-blue: #569cfa;
+    --bongo-orange: #ffcc81;
+    --bongo-cyan: #7ed1e2;
+  }
+
+  .bongo-cat-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .bongo-cat-svg {
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .bongo-cat-credit {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 10;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .bongo-cat-credit:hover {
+    opacity: 1;
+  }
+
+  #bongo-cat {
+    fill: var(--bongo-bg);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 4;
+  }
+
+  #bongo-cat .laptop-cover,
+  #bongo-cat .headphone .band {
+    fill: none;
+  }
+
+  #bongo-cat .paw,
+  #bongo-cat .head {
+    stroke: var(--bongo-orange);
+  }
+
+  #bongo-cat .laptop-keyboard {
+    stroke-width: 2;
+  }
+
+  #bongo-cat .terminal-code {
+    stroke-width: 5;
+  }
+
+  #bongo-cat .music .note,
+  #bongo-cat .laptop-base,
+  #bongo-cat .laptop-cover,
+  #bongo-cat .paw .pads {
+    stroke: var(--bongo-pink);
+  }
+
+  #bongo-cat .table line,
+  #bongo-cat .headphone .band,
+  #bongo-cat .headphone .speaker path:nth-child(3) {
+    stroke: var(--bongo-green);
+  }
+
+  #bongo-cat .terminal-frame,
+  #bongo-cat .laptop-keyboard,
+  #bongo-cat .headphone .speaker path:nth-child(2) {
+    stroke: var(--bongo-blue);
+  }
+
+  #bongo-cat .terminal-code,
+  #bongo-cat .headphone .speaker path:first-child {
+    stroke: var(--bongo-cyan);
   }
 }

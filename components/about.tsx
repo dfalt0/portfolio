@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { BongoCat } from "@/components/bongo-cat";
 
 export function About() {
   return (
@@ -16,7 +17,7 @@ export function About() {
             About Me
           </h2>
           <p className="text-xl text-muted-foreground">
-            A passionate developer who loves creating digital experiences
+            A passionate developer who loves creating and fixing things
           </p>
         </div>
 
@@ -38,7 +39,7 @@ export function About() {
                 <div className="flex-1 text-center sm:text-left">
                   <h3 className="text-2xl font-bold mb-3">Mark Akinshev</h3>
                   <p className="text-muted-foreground mb-4">
-                    Full-stack developer, Cybersecurity, and Systems Engineer.
+                    Full-stack, Cybersecurity, and Systems Engineer.
                     I specialize in modern web and system technologies and love turning complex problems into simple,
                     efficient, and reliable solutions.
                   </p>
@@ -68,7 +69,6 @@ export function About() {
                   <span className="window-control window-control-maximize"></span>
                 </div>
                 <div className="window-title">
-                  <span className="window-icon">⚡</span>
                   engineer.js
                 </div>
                 <div className="window-actions">
@@ -82,34 +82,53 @@ export function About() {
                   <div className="code-line">
                     <span className="line-number">1</span>
                     <span className="code-text">
-                      <span className="keyword">const</span>{" "}
-                      <span className="variable">engineer</span> = {"{"}
+                      <span className="comment">// who can it be now</span>
                     </span>
                   </div>
                   <div className="code-line">
                     <span className="line-number">2</span>
-                    <span className="code-text indent">
-                      name: <span className="string">'Red Head Wizard'</span>,
+                    <span className="code-text">
+                      <span className="keyword">const</span>
+                      <span className="operator"> </span>
+                      <span className="variable">engineer</span>
+                      <span className="operator"> = </span>
+                      <span className="punctuation">{"{"}</span>
                     </span>
                   </div>
                   <div className="code-line">
                     <span className="line-number">3</span>
                     <span className="code-text indent">
-                      passion: <span className="string">'Make Useful Things'</span>,
+                      <span className="property">name</span>
+                      <span className="operator">: </span>
+                      <span className="string">'The Ginger Wizard'</span>
+                      <span className="punctuation">,</span>
                     </span>
                   </div>
                   <div className="code-line">
                     <span className="line-number">4</span>
                     <span className="code-text indent">
-                      status: <span className="string">'Watching Anime'</span>
+                      <span className="property">passion</span>
+                      <span className="operator">: </span>
+                      <span className="string">'Make Useful Things'</span>
+                      <span className="punctuation">,</span>
                     </span>
                   </div>
                   <div className="code-line">
                     <span className="line-number">5</span>
-                    <span className="code-text">{"};"}</span>
+                    <span className="code-text indent">
+                      <span className="property">status</span>
+                      <span className="operator">: </span>
+                      <span className="string">'Watching Anime'</span>
+                    </span>
                   </div>
                   <div className="code-line">
                     <span className="line-number">6</span>
+                    <span className="code-text">
+                      <span className="punctuation">{"};"}</span>
+                    </span>
+                  </div>
+                  <div className="code-line">
+                    <span className="line-number">7</span>
                     <span className="code-text">
                       <span className="cursor-blink">▋</span>
                     </span>
@@ -117,8 +136,13 @@ export function About() {
                 </div>
               </div>
             </div>
-            
-            
+          </div>
+        </div>
+
+        {/* Bongo Cat Animation */}
+        <div className="max-w-6xl mx-auto w-full flex flex-col items-center justify-center mt-36 mb-0">
+          <div className="scale-[1.8]">
+            <BongoCat />
           </div>
         </div>
       </div>
