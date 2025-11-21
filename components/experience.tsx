@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Briefcase } from "lucide-react";
+import Beams from "@/components/Beams";
 
 export function Experience() {
   const workHistory = [
@@ -57,9 +58,26 @@ export function Experience() {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 relative">
+      {/* Beams Background */}
+      <div className="absolute inset-0 z-0 opacity-30" style={{ width: '100%', height: '100%' }}>
+        <Beams
+          beamWidth={1}
+          beamHeight={15}
+          beamNumber={10}
+          lightColor="#ffffff"
+          speed={4}
+          noiseIntensity={3}
+          scale={0.2}
+          rotation={30}
+        />
+      </div>
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
+
       {/* Hero Section */}
-      <section className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-8 sm:py-12 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
@@ -79,7 +97,7 @@ export function Experience() {
       </section>
 
       {/* Experience Timeline */}
-      <section className="py-12 sm:py-16">
+      <section className="py-4 sm:py-8 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
@@ -148,7 +166,7 @@ export function Experience() {
       </section>
 
       {/* Additional Info Section */}
-      <section className="py-16 sm:py-24 bg-muted/30">
+      <section className="py-16 sm:py-24 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="max-w-3xl mx-auto border-2 border-primary/20">
             <CardContent className="p-8 sm:p-12 text-center">
