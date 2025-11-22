@@ -79,7 +79,7 @@ export function Hero() {
             <span>Your Everything Engineer</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
             <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
               Conducting Duct-Tape
             </span>
@@ -89,7 +89,7 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
             Crafting, building, and breaking things. Always on a project. Software should be simple, efficient, reliable, fast, easy, and "cost-effective".
           </p>
 

@@ -41,10 +41,10 @@ export function Contact() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Let's Work Together
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Have a project in mind? I'd love to hear from you
           </p>
         </div>
@@ -86,7 +86,7 @@ export function Contact() {
           {/* Get In Touch Card */}
           <Card className="border-2">
             <CardHeader>
-              <CardTitle className="text-2xl">Get In Touch</CardTitle>
+              <CardTitle className="text-xl">Get In Touch</CardTitle>
               <CardDescription>
                 Feel free to reach out through any of these channels. No spam please.
               </CardDescription>

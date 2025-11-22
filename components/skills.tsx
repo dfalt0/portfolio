@@ -138,10 +138,10 @@ export function Skills() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Skills & Expertise
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Technologies and tools I work with
           </p>
         </div>
@@ -154,7 +154,7 @@ export function Skills() {
               onClick={() => setSelectedCategory(categoryIndex)}
             >
               <CardContent className="p-6 flex flex-col flex-1">
-                <h3 className="text-2xl font-bold mb-3 text-center">
+                <h3 className="text-xl font-bold mb-3 text-center">
                   {category.category}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-6 text-center">
@@ -200,7 +200,7 @@ export function Skills() {
           {selectedCategory !== null && (
             <DialogContent className="max-w-3xl max-h-[90vh]">
               <DialogHeader>
-                <DialogTitle className="text-3xl font-bold">
+                <DialogTitle className="text-2xl font-bold">
                   {skillCategories[selectedCategory].category}
                 </DialogTitle>
                 <DialogDescription className="text-base">

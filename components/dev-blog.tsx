@@ -41,10 +41,10 @@ export function DevBlog() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Dev Blog
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Thoughts, tutorials, and insights on development
           </p>
         </div>
@@ -86,7 +86,7 @@ export function DevBlog() {
         </div>
 
         <div className="max-w-3xl mx-auto mb-8">
-          <h3 className="text-2xl font-semibold mb-6 text-center">Featured Posts</h3>
+          <h3 className="text-xl font-semibold mb-6 text-center">Featured Posts</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -100,7 +100,7 @@ export function DevBlog() {
                   <Calendar className="h-4 w-4" />
                   <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
-                <CardTitle className="text-xl mb-2">{post.title}</CardTitle>
+                <CardTitle className="text-lg mb-2">{post.title}</CardTitle>
                 <CardDescription className="text-base">
                   {post.description}
                 </CardDescription>
