@@ -57,7 +57,7 @@ export function Projects() {
             Personal Projects
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground">
-            A collection of projects that showcase my "skills and creativity".
+            A collection of projects that showcase my &quot;skills and creativity&quot;.
           </p>
         </div>
 
