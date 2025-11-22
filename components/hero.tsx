@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Terminal, Zap } from "lucide-react";
+import { ArrowDown, Terminal, Zap, Github } from "lucide-react";
 import PixelBlast from "@/components/PixelBlast";
 
 // Color palette to choose from
@@ -108,6 +108,22 @@ export function Hero() {
               className="text-base px-8 py-6 pointer-events-auto"
             >
               <Link href="/showcase">Freelance</Link>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="text-base px-8 py-6 pointer-events-auto"
+            >
+              <a 
+                href="https://github.com/dfalt0" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Github className="h-5 w-5" />
+                GitHub
+              </a>
             </Button>
           </div>
 
