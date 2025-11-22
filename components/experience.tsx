@@ -16,45 +16,75 @@ export function Experience() {
       description: "Founded and lead a cybersecurity SaaS startup focused on automating all aspects of cybersecurity for businesses. Building innovative solutions to help companies protect their digital assets.",
       responsibilities: [
         "Product development and strategy",
-        "Team leadership and management",
         "Business development and client relations",
         "Technical architecture and implementation",
       ],
-      technologies: ["React.js", "Next.js", "TypeScript", "PostgreSQL", "Prisma", "AWS", "Vercel"],
+      technologies: ["AI","React.js", "TypeScript", "n8n", "Docker", "SIEM","PostgreSQL", "Prisma", "AWS", "Vercel"],
+      type: "Part-time",
+    },
+    {
+      company: "Freelance",
+      position: "Cybersecurity Consultant",
+      location: "Remote",
+      startDate: "2024",
+      endDate: "Present",
+      description: "Providing cybersecurity consulting services to clients. Specializing in cybersecurity, compliance, and risk management.",
+      responsibilities: [
+        "Client consultation and project planning",
+        "Cybersecurity assessment and remediation",
+        "Compliance and risk management",
+        "Incident response and recovery",
+      ],
+      technologies: ["SIEM", "SOAR", "Security Ops Center", "XDR", "Compliance", "Risk Management", "Incident Response", "Recovery", "Threat Intelligence"],
+      type: "Contract",
+    },
+    {
+      company: "IT MSP Company",
+      position: "Senior Systems Engineer",
+      location: "Nebraska, USA",
+      startDate: "2022",
+      endDate: "2023",
+      description: "Worked on various cybersecurity and systems engineering projects, focusing on infrastructure security, automation, and system optimization.",
+      responsibilities: [
+        "System architecture design",
+        "Security & IT Network implementation, monitoring, and auditing",
+        "Infrastructure automation",
+        "Performance optimization",
+      ],
+      technologies: ["Security Ops Center", "Windows Server", "Monitoring", "Linux", "Docker", "AWS", "Python", "Bash", "Kubernetes", "Terraform", "PowerShell"],
       type: "Full-time",
     },
     {
-      company: "Freelance Developer",
-      position: "Full-Stack Developer",
-      location: "Remote",
-      startDate: "2022",
-      endDate: "Present",
-      description: "Providing full-stack development services to clients worldwide. Specializing in modern web applications, e-commerce solutions, and custom software development.",
+      company: "International Non-Profit Research Center",
+      position: "Full-Stack Engineer / Research Assistant",
+      location: "Nebraska, USA",
+      startDate: "2018",
+      endDate: "2021",
+      description: "Providing full-stack development services for the research center. Completeing projects for international partners. Specializing in web development, GIS, and data analysis.",
       responsibilities: [
         "Client consultation and project planning",
         "Full-stack web application development",
         "UI/UX design and implementation",
         "Deployment and maintenance",
       ],
-      technologies: ["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "MongoDB"],
-      type: "Freelance",
+      technologies: ["Full-stack Web Development", "PHP", "Laravel", "Apache", "MySQL", "JavaScript", "HTML", "CSS", "Bootstrap", "jQuery", "JSON", "XML", "RESTful APIs", "Web Services", "Python", "MATLAB", "ArcGIS", "GPS/GNSS"],
+      type: "Full-time, Part-time",
     },
     {
-      company: "Systems Engineer",
-      position: "Cybersecurity & Systems Engineer",
-      location: "Various",
-      startDate: "2020",
-      endDate: "2024",
-      description: "Worked on various cybersecurity and systems engineering projects, focusing on infrastructure security, automation, and system optimization.",
+      company: "Police Department",
+      position: "IT Administrator",
+      location: "Nebraska, USA",
+      startDate: "2017",
+      endDate: "2019",
+      description: "Responsible for the deployment and maintenance of the department's IT infrastructure and systems.",
       responsibilities: [
-        "System architecture design",
-        "Security implementation and auditing",
-        "Infrastructure automation",
-        "Performance optimization",
+        "Support and Help Desk",
+        "Training and Documentation",
+        "Network and Security Administration",
       ],
-      technologies: ["Linux", "Docker", "AWS", "Python", "Bash", "Kubernetes"],
-      type: "Contract",
-    },
+      technologies: ["IT Support","Windows Server", "Active Directory", "Group Policy", "PowerShell", "SQL Server", "Network Security", "Network Monitoring"],
+      type: "Part-time",
+    }
   ];
 
   return (
@@ -90,7 +120,7 @@ export function Experience() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              A timeline of my professional experience, projects, and career milestones.
+              A timeline of my professional experience and career milestones.
             </p>
           </div>
         </div>
