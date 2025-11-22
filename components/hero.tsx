@@ -39,7 +39,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20"
     >
       {/* Pixel Blast Background */}
       <div className="absolute inset-0 z-0">
@@ -79,7 +79,7 @@ export function Hero() {
             <span>Your Everything Engineer</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
               Conducting Duct-Tape
             </span>
@@ -89,7 +89,7 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto">
             Crafting, building, and breaking things. Always on a project. Software should be simple, efficient, reliable, fast, easy, and "cost-effective".
           </p>
 
