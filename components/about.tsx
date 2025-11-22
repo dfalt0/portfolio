@@ -6,6 +6,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { BongoCat } from "@/components/bongo-cat";
 import { GitHubContributions } from "@/components/github-contributions";
 
+
 export function About() {
   return (
     <section
@@ -148,7 +149,7 @@ export function About() {
         </div>
 
         {/* GitHub Contributions */}
-        <div className="max-w-6xl mx-auto w-full flex flex-col items-center justify-center mt-32 mb-0">
+        <div className="max-w-6xl mx-auto w-full flex flex-col items-center justify-center mt-48 mb-0">
           <GitHubContributions username="dfalt0" />
         </div>
       </div>

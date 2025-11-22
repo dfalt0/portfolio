@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, ExternalLink, BookOpen } from "lucide-react";
+import FaultyTerminal from "@/components/FaultyTerminal";
 
 export function DevBlog() {
   const blogPosts = [
@@ -37,10 +38,36 @@ export function DevBlog() {
   return (
     <section
       id="dev-blog"
-      className="py-24 sm:py-32"
+      className="py-24 sm:py-32 relative min-h-screen"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+      {/* Faulty Terminal Background */}
+      <div className="absolute inset-0 z-0 opacity-20">
+        <FaultyTerminal
+          scale={3}
+          gridMul={[2, 1]}
+          digitSize={1.2}
+          timeScale={1}
+          pause={false}
+          scanlineIntensity={1}
+          glitchAmount={1}
+          flickerAmount={1}
+          noiseAmp={1}
+          chromaticAberration={0}
+          dither={0}
+          curvature={0.1}
+          tint="#00ff00"
+          mouseReact={true}
+          mouseStrength={0.5}
+          pageLoadAnimation={false}
+          brightness={1}
+        />
+      </div>
+
+      {/* Gradient Overlay for better text readability */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pointer-events-none">
+        <div className="max-w-3xl mx-auto text-center mb-12 pointer-events-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Dev Blog
           </h2>
@@ -50,7 +77,7 @@ export function DevBlog() {
         </div>
 
         {/* External Blog Link */}
-        <div className="max-w-3xl mx-auto mb-16">
+        <div className="max-w-3xl mx-auto mb-16 pointer-events-auto">
           <Card className="border-2 border-primary/20 bg-primary/5 hover:border-primary/40 transition-all duration-300">
             <CardContent className="p-6">
               <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -85,11 +112,11 @@ export function DevBlog() {
           </Card>
         </div>
 
-        <div className="max-w-3xl mx-auto mb-8">
+        <div className="max-w-3xl mx-auto mb-8 pointer-events-auto">
           <h3 className="text-xl font-semibold mb-6 text-center">Featured Posts</h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pointer-events-auto">
           {blogPosts.map((post, index) => (
             <Card
               key={index}

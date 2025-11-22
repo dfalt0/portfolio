@@ -7,7 +7,7 @@ export function Footer() {
             © {new Date().getFullYear()} Mark's Portfolio. O'RLY? Productions. What rights reserved?
           </p>
           <p className="text-sm text-muted-foreground">
-            Next.js + shadcn/ui
+            Next.js + Tailwind + shadcn/ui + ReactBits
           </p>
         </div>
       </div>
