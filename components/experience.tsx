@@ -64,10 +64,10 @@ export function Experience() {
         <Beams
           beamWidth={1}
           beamHeight={15}
-          beamNumber={10}
+          beamNumber={12}
           lightColor="#ffffff"
-          speed={4}
-          noiseIntensity={3}
+          speed={5}
+          noiseIntensity={5}
           scale={0.2}
           rotation={30}
         />
