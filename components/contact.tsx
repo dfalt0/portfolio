@@ -55,8 +55,10 @@ export function Contact() {
             <CardContent className="p-6">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-full bg-green-500/10 border border-green-500/20">
-                    <UpworkIcon className="h-8 w-8 text-green-500" />
+                  <div className="p-3 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+                    <div style={{ transform: 'translateY(2px)' }}>
+                      <UpworkIcon className="h-8 w-8 text-green-500" />
+                    </div>
                   </div>
                   <div className="text-center sm:text-left">
                     <h3 className="text-lg font-semibold mb-1">Hire Me on Upwork</h3>
@@ -67,16 +69,17 @@ export function Contact() {
                 </div>
                 <Button
                   size="lg"
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 gap-2 group"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 gap-2 group mt-4 sm:mt-0 overflow-visible"
                   asChild
                 >
                   <a
                     href="https://www.upwork.com/freelancers/~015e481da235081a6b"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="flex items-center gap-2"
                   >
-                    <UpworkIcon className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                    View Profile
+                    <UpworkIcon className="h-4 w-4 group-hover:scale-110 transition-transform flex-shrink-0" />
+                    <span>View Profile</span>
                   </a>
                 </Button>
               </div>

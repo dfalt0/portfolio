@@ -141,7 +141,7 @@ export function About() {
 
         {/* Bongo Cat Animation */}
         <div className="max-w-6xl mx-auto w-full flex flex-col items-center justify-center mt-36 mb-0">
-          <div className="scale-[1.8]">
+          <div className="scale-[1.0] sm:scale-[1.4] lg:scale-[1.8]">
             <BongoCat />
           </div>
         </div>
