@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Mark Akinshev | Portfolio",
   description: "Mark's portfolio showcasing creative development work",
+  icons: {
+    icon: '/profile.JPG',
+    shortcut: '/profile.JPG',
+    apple: '/profile.JPG',
+  },
 };
 
 export const viewport: Viewport = {

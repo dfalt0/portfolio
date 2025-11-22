@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { BongoCat } from "@/components/bongo-cat";
+import { GitHubContributions } from "@/components/github-contributions";
 
 export function About() {
   return (
@@ -144,6 +145,11 @@ export function About() {
           <div className="scale-[1.0] sm:scale-[1.4] lg:scale-[1.8]">
             <BongoCat />
           </div>
+        </div>
+
+        {/* GitHub Contributions */}
+        <div className="max-w-6xl mx-auto w-full flex flex-col items-center justify-center mt-32 mb-0">
+          <GitHubContributions username="dfalt0" />
         </div>
       </div>
     </section>

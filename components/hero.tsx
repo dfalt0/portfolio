@@ -90,7 +90,7 @@ export function Hero() {
           </h1>
 
           <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Crafting, building, and breaking things. Always on a project. Software should be simple, efficient, reliable, fast, easy, and "cost-effective".
+            Crafting, breaking, and fixing things. Always on a project. Software should be simple, efficient, reliable, fast, easy, and "cost-effective".
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
