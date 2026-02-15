@@ -26,6 +26,15 @@ export function Projects() {
       link: "#",
       github: "https://github.com/dfalt0/malware-dataset1-test1",
     },
+    {
+      title: "Website Agency",
+      description:
+        "Landing and showcase site for a website agency, built and deployed on Vercel.",
+      technologies: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+      image: "🌐",
+      link: "https://website-agency-kd72arffe-dfalt0s-projects.vercel.app/",
+      github: "#",
+    },
     // {
     //   title: "AI Content Generator",
     //   description:
@@ -67,7 +76,7 @@ export function Projects() {
               key={index}
               className="group border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl overflow-hidden"
             >
-              <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+              <div className="h-48 bg-linear-to-br from-primary/20 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300 relative overflow-hidden">
                 {project.image.startsWith("/") || project.image.startsWith("http") ? (
                   <Image
                     src={project.image}
