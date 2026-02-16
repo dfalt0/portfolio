@@ -25,7 +25,7 @@ export function ProjectsFull() {
             All Projects
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground">
-            In-depth list of personal and open-source projects. More can be added from GitHub.
+            In-depth list of personal and open-source projects.
           </p>
         </div>
 
