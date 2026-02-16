@@ -85,7 +85,7 @@ export function Navigation() {
           <div className="hidden md:flex items-center gap-6">
             {pathname === "/" ? (
               <>
-                {["About", "Projects", "Skills", "Contact"].map((item) => (
+                {["About", "Skills", "Contact"].map((item) => (
                   <button
                     key={item}
                     onClick={() => scrollToSection(item.toLowerCase())}
@@ -103,6 +103,16 @@ export function Navigation() {
                 Home
               </Link>
             )}
+            <Link
+              href="/projects"
+              className={`text-sm font-medium transition-colors ${
+                pathname === "/projects"
+                  ? "text-foreground font-semibold"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Projects
+            </Link>
             <Link
               href="/blog"
               className={`text-sm font-medium transition-colors ${
@@ -179,7 +189,7 @@ export function Navigation() {
           <div className="md:hidden py-4 border-t border-border">
             {pathname === "/" ? (
               <>
-                {["About", "Projects", "Skills", "Contact"].map((item) => (
+                {["About", "Skills", "Contact"].map((item) => (
                   <button
                     key={item}
                     onClick={() => {
@@ -200,6 +210,17 @@ export function Navigation() {
                 Home
               </Link>
             )}
+            <Link
+              href="/projects"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors ${
+                pathname === "/projects"
+                  ? "text-foreground font-semibold bg-accent"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+              }`}
+            >
+              Projects
+            </Link>
             <Link
               href="/blog"
               onClick={() => setIsMobileMenuOpen(false)}
