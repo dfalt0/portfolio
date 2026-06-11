@@ -359,9 +359,34 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
     composer?: EffectComposer;
     touch?: ReturnType<typeof createTouchTexture>;
     liquidEffect?: Effect;
+    dispose?: () => void;
   } | null>(null);
 
   const prevConfigRef = useRef<any>(null);
+  const pageVisibleRef = useRef(true);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visibilityRef.current.visible = entry.isIntersecting;
+      },
+      { rootMargin: '100px', threshold: 0 }
+    );
+    observer.observe(container);
+
+    const onVisibilityChange = () => {
+      pageVisibleRef.current = document.visibilityState === 'visible';
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -383,15 +408,15 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
     }
 
     if (mustReinit) {
-      if (threeRef.current) {
-        const t = threeRef.current;
-        t.resizeObserver?.disconnect();
-        cancelAnimationFrame(t.raf!);
-        t.quad?.geometry.dispose();
-        t.material.dispose();
-        t.composer?.dispose();
-        t.renderer.dispose();
-        if (t.renderer.domElement.parentElement === container) container.removeChild(t.renderer.domElement);
+      if (threeRef.current?.dispose) {
+        threeRef.current.dispose();
+      } else if (threeRef.current) {
+        threeRef.current.resizeObserver?.disconnect();
+        if (threeRef.current.raf) cancelAnimationFrame(threeRef.current.raf);
+        threeRef.current.quad?.geometry.dispose();
+        threeRef.current.material.dispose();
+        threeRef.current.composer?.dispose();
+        threeRef.current.renderer.dispose();
         threeRef.current = null;
       }
 
@@ -554,7 +579,10 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
 
       let raf = 0;
       const animate = () => {
-        if (autoPauseOffscreen && !visibilityRef.current.visible) {
+        if (
+          (autoPauseOffscreen && !visibilityRef.current.visible) ||
+          !pageVisibleRef.current
+        ) {
           raf = requestAnimationFrame(animate);
           return;
         }
@@ -580,6 +608,23 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
 
       raf = requestAnimationFrame(animate);
 
+      const disposeThree = () => {
+        const t = threeRef.current;
+        if (!t) return;
+        t.resizeObserver?.disconnect();
+        if (t.raf) cancelAnimationFrame(t.raf);
+        renderer.domElement.removeEventListener('pointerdown', onPointerDown);
+        renderer.domElement.removeEventListener('pointermove', onPointerMove);
+        t.quad?.geometry.dispose();
+        t.material.dispose();
+        t.composer?.dispose();
+        t.renderer.dispose();
+        if (t.renderer.domElement.parentElement === container) {
+          container.removeChild(t.renderer.domElement);
+        }
+        threeRef.current = null;
+      };
+
       threeRef.current = {
         renderer,
         scene,
@@ -594,7 +639,8 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
         timeOffset,
         composer,
         touch,
-        liquidEffect
+        liquidEffect,
+        dispose: disposeThree
       };
     } else {
       const t = threeRef.current!;
@@ -626,17 +672,9 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
     prevConfigRef.current = cfg;
 
     return () => {
-      if (threeRef.current && mustReinit) return;
-      if (!threeRef.current) return;
-      const t = threeRef.current;
-      t.resizeObserver?.disconnect();
-      cancelAnimationFrame(t.raf!);
-      t.quad?.geometry.dispose();
-      t.material.dispose();
-      t.composer?.dispose();
-      t.renderer.dispose();
-      if (t.renderer.domElement.parentElement === container) container.removeChild(t.renderer.domElement);
-      threeRef.current = null;
+      if (threeRef.current?.dispose) {
+        threeRef.current.dispose();
+      }
     };
   }, [
     antialias,

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Navigation } from "@/components/navigation";
-import { ProjectsFull } from "@/components/projects-full";
-import { Contact } from "@/components/contact";
+import { ProjectsPageContent } from "@/components/theme-pages/projects-page-content";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
@@ -11,11 +9,9 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen">
-      <Navigation />
-      <ProjectsFull />
-      <Contact />
+    <>
+      <ProjectsPageContent />
       <Footer />
-    </main>
+    </>
   );
 }

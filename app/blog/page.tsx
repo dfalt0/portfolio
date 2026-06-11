@@ -1,24 +1,17 @@
 import type { Metadata } from "next";
-import { Navigation } from "@/components/navigation";
-import { DevBlog } from "@/components/dev-blog";
-import { Contact } from "@/components/contact";
+import { BlogPageContent } from "@/components/theme-pages/blog-page-content";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Dev Blog | Mark Akinshev",
-  description: "Thoughts, tutorials, and insights on development",
+  title: "Blog | Mark Akinshev",
+  description: "Dev blog with tutorials, insights, and development thoughts.",
 };
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen">
-      <Navigation />
-      <div className="pt-16">
-        <DevBlog />
-      </div>
-      <Contact />
+    <>
+      <BlogPageContent />
       <Footer />
-    </main>
+    </>
   );
 }
-

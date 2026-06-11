@@ -4,42 +4,67 @@ export type Project = {
   longDescription?: string;
   technologies: string[];
   image: string;
+  iconType?: "github";
+  lottieIcon?: string;
   link: string;
   github: string;
 };
 
 export const projects: Project[] = [
   {
-    title: "AkinSec | Cybersecurity Automation",
+    title: "AkinSec | AI Security Platform",
     description:
-      "CEO & Founder of cybersecurity SaaS startup built to automate all aspects of cybersecurity for businesses.",
+      "In-development cloud SOC platform aiming to provide SIEM capabilities through a cloud-based platform managed via AI chat.",
     longDescription:
-      "Full-stack cybersecurity SaaS platform. Handles compliance workflows, risk assessments, and client dashboards with ReactFlow for process design, n8n for automation, and PostgreSQL/Prisma on the backend. Deployed on Vercel with AWS and Hostinger for infrastructure.",
-    technologies: ["React.js", "Vite", "Tailwind", "ReactFlow", "shadcn/ui", "Framer Motion/GSAP", "n8n", "Radix UI", "PostgreSQL", "Prisma", "Vercel", "AWS", "Hostinger"],
-    image: "/AkinSec_sc.png",
+      "Building an AI-powered cybersecurity platform with MongoDB, PostgreSQL, Svelte, React, Railway, Wazuh, Docker, and RAG API. Focused on easy access to detection, alerting, and response through AI-assisted workflows.",
+    technologies: [
+      "MongoDB",
+      "PostgreSQL",
+      "Svelte",
+      "React",
+      "Railway",
+      "Wazuh",
+      "Docker",
+      "RAG API",
+    ],
+    image: "/akinsec-logo.png",
     link: "https://akinsec.com",
     github: "https://github.com/dfalt0/akinsec",
   },
   {
-    title: "AI Fine Tuning | malware-dataset1-test1",
+    title: "AI / LLM Research | malware-dataset1-test1",
     description:
-      "A work in progress AI fine tuning project with UnslothAI, fine tuning a model to detect malware.",
+      "Fine-tuning DeepSeek, Qwen, and Kimi models with PyTorch and QLoRA while testing adversarial inputs and LLM security behavior.",
     longDescription:
-      "Ongoing ML project using Unsloth for efficient fine-tuning of open-source models to classify malware. Runs in Google Colab with NVidia CUDA. Dataset and training pipeline in the repo.",
-    technologies: ["Google Collab", "NVidia CUDA", "unsloth.ai", "Open-Source Models", "Python", "PyTorch"],
+      "Ongoing ML research building an MCP-based security knowledge database. Experiments with model fine-tuning for malware detection and adversarial input analysis.",
+    technologies: ["PyTorch", "QLoRA", "DeepSeek", "Qwen", "Kimi", "Python", "MCP"],
     image: "/ai-sc.png",
+    iconType: "github",
     link: "#",
     github: "https://github.com/dfalt0/malware-dataset1-test1",
   },
   {
-    title: "Website Agency",
+    title: "Adversarial AI Detection Project",
     description:
-      "Landing and showcase site for a website agency, built and deployed on Vercel.",
+      "Experimenting with methods to detect malicious inputs in AI systems and harden LLM-facing applications.",
     longDescription:
-      "Marketing and landing site for a website agency. Built with Next.js and Tailwind, deployed on Vercel.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+      "Research project exploring detection techniques for adversarial and malicious prompts in AI pipelines.",
+    technologies: ["Python", "LLM Security", "AI Safety"],
+    image: "🛡️",
+    lottieIcon: "adversarial-ai",
+    link: "#",
+    github: "https://github.com/dfalt0/Adversarial-AI-Detection-Project",
+  },
+  {
+    title: "Portfolio | dfalt0.com",
+    description:
+      "Personal portfolio and blog built with React, Next.js, TypeScript, Tailwind, and Vercel deployment.",
+    longDescription:
+      "This site — a React/Next.js portfolio with theme switching, project showcase, and dev blog.",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
     image: "🌐",
-    link: "https://website-agency-kd72arffe-dfalt0s-projects.vercel.app/",
-    github: "#",
+    lottieIcon: "portfolio",
+    link: "https://dfalt0.com",
+    github: "https://github.com/dfalt0",
   },
 ];

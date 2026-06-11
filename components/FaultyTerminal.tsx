@@ -346,8 +346,16 @@ export default function FaultyTerminal({
     resizeObserver.observe(ctn);
     resize();
 
+    let pageVisible = true;
+    const onVisibilityChange = () => {
+      pageVisible = document.visibilityState === 'visible';
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
     const update = (t: number) => {
       rafRef.current = requestAnimationFrame(update);
+
+      if (!pageVisible) return;
 
       if (pageLoadAnimation && loadAnimationStartRef.current === 0) {
         loadAnimationStartRef.current = t;
@@ -389,6 +397,7 @@ export default function FaultyTerminal({
 
     return () => {
       cancelAnimationFrame(rafRef.current);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       resizeObserver.disconnect();
       if (mouseReact) ctn.removeEventListener('mousemove', handleMouseMove);
       if (gl.canvas.parentElement === ctn) ctn.removeChild(gl.canvas);

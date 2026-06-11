@@ -1,96 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Briefcase } from "lucide-react";
-import Beams from "@/components/Beams";
+import { LazyMount } from "@/components/shared/lazy-mount";
+import { workHistory, workSectionSummary } from "@/lib/site-data";
+
+const Beams = dynamic(() => import("@/components/Beams"), { ssr: false });
 
 export function Experience() {
-  const workHistory = [
-    {
-      company: "AkinSec",
-      position: "CEO & Founder",
-      location: "Remote",
-      startDate: "2024",
-      endDate: "Present",
-      description: "Founded and lead a cybersecurity SaaS startup focused on automating all aspects of cybersecurity for businesses. Building innovative solutions to help companies protect their digital assets.",
-      responsibilities: [
-        "Product development and strategy",
-        "Business development and client relations",
-        "Technical architecture and implementation",
-      ],
-      technologies: ["AI","React.js", "TypeScript", "n8n", "Docker", "SIEM","PostgreSQL", "Prisma", "AWS", "Vercel"],
-      type: "Part-time",
-    },
-    {
-      company: "Freelance",
-      position: "Cybersecurity Consultant",
-      location: "Remote",
-      startDate: "2024",
-      endDate: "Present",
-      description: "Providing cybersecurity consulting services to clients. Specializing in cybersecurity, compliance, and risk management.",
-      responsibilities: [
-        "Client consultation and project planning",
-        "Cybersecurity assessment and remediation",
-        "Compliance and risk management",
-        "Incident response and recovery",
-      ],
-      technologies: ["SIEM", "SOAR", "Security Ops Center", "XDR", "Compliance", "Risk Management", "Incident Response", "Recovery", "Threat Intelligence"],
-      type: "Contract",
-    },
-    {
-      company: "IT MSP Company",
-      position: "Senior Systems Engineer",
-      location: "Nebraska, USA",
-      startDate: "2022",
-      endDate: "2023",
-      description: "Worked on various cybersecurity and systems engineering projects, focusing on infrastructure security, automation, and system optimization.",
-      responsibilities: [
-        "System architecture design",
-        "Security & IT Network implementation, monitoring, and auditing",
-        "Infrastructure automation",
-        "Performance optimization",
-      ],
-      technologies: ["Security Ops Center", "Windows Server", "Monitoring", "Linux", "Docker", "AWS", "Python", "Bash", "Kubernetes", "Terraform", "PowerShell"],
-      type: "Full-time",
-    },
-    {
-      company: "International Non-Profit Research Center",
-      position: "Full-Stack Engineer / Research Assistant",
-      location: "Nebraska, USA",
-      startDate: "2018",
-      endDate: "2021",
-      description: "Providing full-stack development services for the research center. Completeing projects for international partners. Specializing in web development, GIS, and data analysis.",
-      responsibilities: [
-        "Client consultation and project planning",
-        "Full-stack web application development",
-        "UI/UX design and implementation",
-        "Deployment and maintenance",
-      ],
-      technologies: ["Full-stack Web Development", "PHP", "Laravel", "Apache", "MySQL", "JavaScript", "HTML", "CSS", "Bootstrap", "jQuery", "JSON", "XML", "RESTful APIs", "Web Services", "Python", "MATLAB", "ArcGIS", "GPS/GNSS"],
-      type: "Full-time, Part-time",
-    },
-    {
-      company: "Police Department",
-      position: "IT Administrator",
-      location: "Nebraska, USA",
-      startDate: "2017",
-      endDate: "2019",
-      description: "Responsible for the deployment and maintenance of the department's IT infrastructure and systems.",
-      responsibilities: [
-        "Support and Help Desk",
-        "Training and Documentation",
-        "Network and Security Administration",
-      ],
-      technologies: ["IT Support","Windows Server", "Active Directory", "Group Policy", "PowerShell", "SQL Server", "Network Security", "Network Monitoring"],
-      type: "Part-time",
-    }
-  ];
-
   return (
     <div className="min-h-screen pt-16 relative">
       {/* Beams Background */}
-      <div className="absolute inset-0 z-0 opacity-30" style={{ width: '100%', height: '100%' }}>
+      <LazyMount className="absolute inset-0 z-0 opacity-30" minHeight="100%">
         <Beams
           beamWidth={1}
           beamHeight={15}
@@ -101,7 +24,7 @@ export function Experience() {
           scale={0.2}
           rotation={30}
         />
-      </div>
+      </LazyMount>
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
@@ -119,8 +42,8 @@ export function Experience() {
                 & Career Journey
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              A timeline of my professional experience and career milestones.
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+              {workSectionSummary}
             </p>
           </div>
         </div>

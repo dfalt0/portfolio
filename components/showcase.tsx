@@ -1,11 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, CheckCircle2, Clock, DollarSign } from "lucide-react";
-import DarkVeil from "@/components/DarkVeil";
+import { LazyMount } from "@/components/shared/lazy-mount";
+
+const DarkVeil = dynamic(() => import("@/components/DarkVeil"), { ssr: false });
 
 // Preview Card Component with proper error handling
 function PreviewCard({ example, index }: { example: any; index: number }) {
@@ -250,9 +253,9 @@ export function Showcase() {
   return (
     <div className="min-h-screen pt-16 relative">
       {/* DarkVeil Background */}
-      <div className="absolute inset-0 z-0 opacity-100">
+      <LazyMount className="absolute inset-0 z-0 opacity-100" minHeight="100%">
         <DarkVeil />
-      </div>
+      </LazyMount>
 
       {/* Gradient Overlay for better text readability */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
