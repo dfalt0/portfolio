@@ -63,7 +63,7 @@ export function ClassicHero() {
         />
       </LazyMount>
 
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-background/80 via-background/60 to-background/80 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 pointer-events-none">
         <div
@@ -77,11 +77,11 @@ export function ClassicHero() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
               Conducting Duct-Tape
             </span>
             <br />
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Experiments
             </span>
           </h1>

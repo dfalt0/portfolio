@@ -27,18 +27,18 @@ export function Experience() {
       </LazyMount>
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
 
       {/* Hero Section */}
       <section className="py-8 sm:py-12 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
                 Work Experience
               </span>
               <br />
-              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 & Career Journey
               </span>
             </h1>
@@ -127,8 +127,8 @@ export function Experience() {
                 Interested in Working Together?
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                I'm always open to discussing new opportunities, projects, or collaborations. 
-                Let's connect and see how we can work together.
+                I&apos;m always open to discussing new opportunities, projects, or collaborations. 
+                Let&apos;s connect and see how we can work together.
               </p>
             </CardContent>
           </Card>

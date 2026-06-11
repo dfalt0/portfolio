@@ -3,7 +3,7 @@ import { ExperiencePageContent } from "@/components/theme-pages/experience-page-
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Experience | Mark Akinshev",
+  title: "Experience",
   description: "Work history and professional experience.",
 };
 

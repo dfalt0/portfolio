@@ -3,7 +3,7 @@ import { BlogPageContent } from "@/components/theme-pages/blog-page-content";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Blog | Mark Akinshev",
+  title: "Blog",
   description: "Dev blog with tutorials, insights, and development thoughts.",
 };
 

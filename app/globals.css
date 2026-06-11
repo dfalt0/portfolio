@@ -321,11 +321,11 @@
   }
 
   .code-line {
-    @apply flex items-start mb-1 min-h-[1.5rem];
+    @apply flex items-start mb-1 min-h-6;
   }
 
   .line-number {
-    @apply text-[#858585] dark:text-[#6e7681] mr-4 select-none text-right min-w-[2rem];
+    @apply text-[#858585] dark:text-[#6e7681] mr-4 select-none text-right min-w-8;
     font-variant-numeric: tabular-nums;
   }
 

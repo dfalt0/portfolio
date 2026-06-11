@@ -45,7 +45,7 @@ export function DevBlog() {
         />
       </LazyMount>
 
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pointer-events-none">
         <div className="max-w-3xl mx-auto text-center mb-12 pointer-events-auto">

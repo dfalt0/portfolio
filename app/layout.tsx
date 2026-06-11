@@ -19,7 +19,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Mark Akinshev | Portfolio",
+  title: {
+    default: "dfalt0.com",
+    template: "%s | dfalt0.com",
+  },
   description: "Mark's portfolio showcasing creative development work",
   icons: {
     icon: "/profile.JPG",

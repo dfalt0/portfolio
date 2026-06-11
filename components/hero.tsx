@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Terminal, Zap, Github } from "lucide-react";
+import { ArrowDown, Terminal, Github } from "lucide-react";
 import PixelBlast from "@/components/PixelBlast";
 
 // Color palette to choose from
@@ -23,10 +23,11 @@ export function Hero() {
   const [currentColor, setCurrentColor] = useState("#B19EEF");
 
   useEffect(() => {
-    setMounted(true);
-    // Pick a random color on page load
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    setCurrentColor(randomColor);
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+      setCurrentColor(colors[Math.floor(Math.random() * colors.length)]);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -61,7 +62,7 @@ export function Hero() {
       </div>
       
       {/* Gradient Overlay for better text readability - pointer-events-none so clicks pass through */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-background/80 via-background/60 to-background/80 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 pointer-events-none">
         <div
@@ -80,17 +81,17 @@ export function Hero() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
               Conducting Duct-Tape
             </span>
             <br />
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Experiments
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Crafting, breaking, and fixing things. Always on a project. Software should be simple, efficient, reliable, fast, easy, and "cost-effective".
+            Crafting, breaking, and fixing things. Always on a project. Software should be simple, efficient, reliable, fast, easy, and &ldquo;cost-effective&rdquo;.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">

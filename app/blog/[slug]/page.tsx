@@ -16,7 +16,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Mark Akinshev`,
+    title: post.title,
     description: post.description,
   };
 }

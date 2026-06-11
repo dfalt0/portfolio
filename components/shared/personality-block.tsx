@@ -76,7 +76,7 @@ export function PersonalityBlock({
                       alt="Mark Akinshev"
                       className="object-cover"
                     />
-                    <AvatarFallback className="text-2xl bg-gradient-to-br from-primary to-primary/60 text-primary-foreground">
+                    <AvatarFallback className="text-2xl bg-linear-to-br from-primary to-primary/60 text-primary-foreground">
                       MA
                     </AvatarFallback>
                   </Avatar>

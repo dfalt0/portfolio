@@ -3,7 +3,7 @@ import { ProjectsPageContent } from "@/components/theme-pages/projects-page-cont
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Projects | Mark Akinshev",
+  title: "Projects",
   description: "In-depth list of personal and open-source projects from GitHub and more.",
 };
 

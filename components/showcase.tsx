@@ -10,8 +10,15 @@ import { LazyMount } from "@/components/shared/lazy-mount";
 
 const DarkVeil = dynamic(() => import("@/components/DarkVeil"), { ssr: false });
 
+type PreviewExample = {
+  title: string;
+  description: string;
+  url: string;
+  category: string;
+};
+
 // Preview Card Component with proper error handling
-function PreviewCard({ example, index }: { example: any; index: number }) {
+function PreviewCard({ example, index }: { example: PreviewExample; index: number }) {
   const [previewError, setPreviewError] = useState(false);
   const isExternal = example.url.startsWith("http");
   
@@ -22,7 +29,7 @@ function PreviewCard({ example, index }: { example: any; index: number }) {
     >
       {/* Browser Window Preview */}
       <div className="relative h-48 bg-muted/30 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 opacity-50" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 opacity-50" />
         {isExternal && !previewError ? (
           <div className="relative h-full w-full">
             {/* Browser Window Frame */}
@@ -55,7 +62,7 @@ function PreviewCard({ example, index }: { example: any; index: number }) {
             </div>
           </div>
         ) : (
-          <div className="h-full w-full flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
+          <div className="h-full w-full flex flex-col items-center justify-center bg-linear-to-br from-primary/20 to-primary/5">
             <div className="text-4xl mb-2 opacity-50">🌐</div>
             <div className="text-xs text-muted-foreground">Click to view</div>
           </div>
@@ -258,18 +265,18 @@ export function Showcase() {
       </LazyMount>
 
       {/* Gradient Overlay for better text readability */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-background/90 via-background/80 to-background/90 pointer-events-none" />
 
       {/* Hero Section */}
       <section className="py-16 sm:py-24 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-foreground via-foreground/80 to-foreground/60 bg-clip-text text-transparent">
                 Website Solutions
               </span>
               <br />
-              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 For Your Business
               </span>
             </h1>
@@ -403,7 +410,7 @@ export function Showcase() {
           {/* Featured Big Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             <Card className="group border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl overflow-hidden flex flex-col">
-              <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
+              <div className="h-48 bg-linear-to-br from-primary/20 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
                 🤖
               </div>
               <CardHeader className="flex-1">
@@ -426,7 +433,7 @@ export function Showcase() {
                     "Real-time streaming responses",
                   ].map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -469,7 +476,7 @@ export function Showcase() {
             </Card>
 
             <Card className="group border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl overflow-hidden flex flex-col">
-              <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
+              <div className="h-48 bg-linear-to-br from-primary/20 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
                 📊
               </div>
               <CardHeader className="flex-1">
@@ -492,7 +499,7 @@ export function Showcase() {
                     "API integrations",
                   ].map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -541,7 +548,7 @@ export function Showcase() {
                 key={index}
                 className="group border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl overflow-hidden flex flex-col"
               >
-                <div className="h-40 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
+                <div className="h-40 bg-linear-to-br from-primary/20 to-primary/5 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300">
                   {website.image}
                 </div>
                 <CardHeader className="flex-1">
@@ -557,7 +564,7 @@ export function Showcase() {
                   <div className="space-y-2 mb-4">
                     {website.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-primary flex-shrink-0" />
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -613,7 +620,7 @@ export function Showcase() {
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
                 I can build custom websites tailored to your specific business needs. 
-                Let's discuss your project and create something unique.
+                Let&apos;s discuss your project and create something unique.
               </p>
               <Button
                 size="lg"

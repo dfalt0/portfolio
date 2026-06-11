@@ -63,7 +63,7 @@ export function ClassicNavigation() {
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="text-xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+              className="text-xl font-bold bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
             >
               Mark Akinshev
             </Link>

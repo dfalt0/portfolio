@@ -3,7 +3,7 @@ import { ShowcasePageContent } from "@/components/theme-pages/showcase-page-cont
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Showcase | Mark Akinshev",
+  title: "Showcase",
   description: "Freelance web development showcase and services.",
 };
 
